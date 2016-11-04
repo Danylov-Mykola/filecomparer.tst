@@ -81,8 +81,9 @@ class Main
      * @param array $params - array with certain keys. Parameters of wrong type will be ignored.
      * Available keys with types:
      *      $ckFileSize         => boolean;
-     *      $ckPartialFileMd5   => boolean;
-     *      $ckPartOfFileSize   => integer positive;
+     *      $readBlockSize      => integer positive;
+     *      $fullContentCompare => boolean;
+     *      $firstBlockCompare  => boolean.
      *      $ckFullFileMd5      => boolean.
      * @return Main $this
      */
@@ -131,6 +132,7 @@ class Main
 
     /**
      * Comparing files with each other
+     * @return Main $this
      */
     public function compareFiles()
     {

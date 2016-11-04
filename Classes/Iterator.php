@@ -76,7 +76,12 @@ class Iterator
         return $this;
     }
 
-    /** Returns cursors position/status and current pointer to &element */
+    /**
+     * Returns cursors position/status and current pointer to &element
+     * @param $element - the variable where function will returns current element
+     * @param int $cursorId - which cursor we need use to get element from the list
+     * @return bool|int - returns cursor position, or false if element could not reached
+     */
     public function current(&$element, $cursorId = 0)
     {
         do {
@@ -92,5 +97,4 @@ class Iterator
 
         return $result;
     }
-
 }

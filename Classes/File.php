@@ -31,15 +31,17 @@ class File implements PieceInterface
     }
 
     /**
-     * @author Mykola Danylov (n.danylov@gmail.com)
+     * Set the mark to object (file)
      */
     public function setMark()
     {
         $this->mark = true;
     }
 
-
-
+    /**
+     * @param $fullFilePath - path to a file
+     * @throws \Exception
+     */
     public function __construct($fullFilePath)
     {
         if(!is_readable($fullFilePath)){
@@ -49,11 +51,19 @@ class File implements PieceInterface
         $this->fileSize = filesize($fullFilePath);
     }
 
+    /**
+     * We have to close file handler manually if it has been created
+     */
     public function __destruct()
     {
         $this->closeHandler();
     }
 
+    /**
+     * See description in PieceInterface
+     * @param int $bytesCount
+     * @return string
+     */
     public function readPart($bytesCount = 1)
     {
         if(is_null($this->fileHandler)) {
@@ -63,6 +73,9 @@ class File implements PieceInterface
         return $readPart;
     }
 
+    /**
+     * Close file
+     */
     public function closeHandler()
     {
         if(!is_null($this->fileHandler)) {
@@ -71,7 +84,8 @@ class File implements PieceInterface
     }
 
     /**
-     * @return null
+     * Returns file path
+     * @return string
      */
     public function getFullFilePath()
     {
@@ -79,6 +93,7 @@ class File implements PieceInterface
     }
 
     /**
+     * Returns file size or null (if file has not been initialized)
      * @return int|null
      */
     public function getFileSize()
@@ -86,6 +101,10 @@ class File implements PieceInterface
         return $this->fileSize;
     }
 
+    /**
+     * Returns md5 string of file or null (see md5_file function description)
+     * @return null|string
+     */
     public function getMd5File()
     {
         if(is_null($this->md5)){
