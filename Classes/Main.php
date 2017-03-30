@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is a part of filecomparer.tst project.
+ * This file is a part of filecomparer.package project.
  * Author: Mykola Danylov (n.danylov@gmail.com)
  * Date: 02.11.2016
  * Time: 19:07
