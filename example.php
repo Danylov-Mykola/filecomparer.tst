@@ -5,19 +5,25 @@
  * Date: 21.10.2016
  * Time: 15:57
  */
+
+if (php_sapi_name() != "cli") {
+    echo "<pre>";
+    echo "Usage this example file in console mode is preferable.\n";
+} 
+echo "Starting with \"filecomparer\" functionality...\n";
+
 require_once "vendor/autoload.php";
 
 use \MykolaDanylov\FileComparer\Main as FileComparer;
-
 $microtime = microtime(true);
 $result =
-    FileComparer::getStatic('files')
+    FileComparer::getStatic('example_files') // Set the root folder name where files have been present.
     ->setParams([
-        'ckFileSize' => true,
-        'readBlockSize' => 16386,
-        'firstBlockCompare' => false,
-        'fullContentCompare' => false,
-        'ckFullFileMd5' => true,
+        'ckFileSize' => true, // Compare files by size
+        'readBlockSize' => 16386, // If files need compare by content, files will be read block-by-block
+        'firstBlockCompare' => false, // Compare by content, block-by-block. It overrides fullContentCompare mode.
+        'fullContentCompare' => false, // Compare by content using reading files content
+        'ckFullFileMd5' => true, // Check files similarity by php native md5_file() function
     ])
     ->compareFiles()
     ->getResultArray();
