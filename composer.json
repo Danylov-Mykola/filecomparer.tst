@@ -1,6 +1,7 @@
 {
   "name": "mykola-danylov/filecomparer",
   "description": "This is a package for compare files in certain directory recursively.",
+  "license": "proprietary",
   "version": "1.0.0",
   "require":{
     "php":">=5.4.0"
