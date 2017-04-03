@@ -18,7 +18,7 @@ require_once "vendor/autoload.php";
 
 $microtime = microtime(true);
 $result =
-    FileComparer::getStatic('example_files') // Set the root folder name where files have been present.
+    FileComparer::getStatic(dirname(__FILE__) . '/example_files') // Set the root folder name where files have been present.
     ->setParams([
         'ckFileSize' => true, // Compare files by size
         'readBlockSize' => 16386, // If files need compare by content, files will be read block-by-block
