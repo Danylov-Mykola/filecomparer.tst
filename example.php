@@ -6,15 +6,16 @@
  * Time: 15:57
  */
 
+use \MykolaDanylov\FileComparer\Main as FileComparer;
+
 if (php_sapi_name() != "cli") {
     echo "<pre>";
     echo "Usage this example file in console mode is preferable.\n";
-} 
+}
 echo "Starting with \"filecomparer\" functionality...\n";
 
 require_once "vendor/autoload.php";
 
-use \MykolaDanylov\FileComparer\Main as FileComparer;
 $microtime = microtime(true);
 $result =
     FileComparer::getStatic('example_files') // Set the root folder name where files have been present.
